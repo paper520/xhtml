@@ -1,0 +1,1 @@
+import xhtml from '../../src/core';
