@@ -71,9 +71,50 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (template) {
+
+  var frame = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+  // 把传递元素类型和标记进行统一处理
+  // http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
+  if (/^(?:\\.|[\w-]|[^0-\xa0])+$/.test(template)) template = "<" + template.trim() + "></" + template.trim() + ">";
+  __WEBPACK_IMPORTED_MODULE_0_innersvg___default.a.set(frame, template);
+  var childNodes = frame.childNodes, flag, child;
+  for (flag = 0; flag < childNodes.length; flag++) {
+    if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
+      child = childNodes[flag];
+      break;
+    }
+  }
+  // 如果不是svg元素，重新用html命名空间创建
+  // 目前结点只考虑了svg元素和html元素
+  // 如果考虑别的元素类型需要修改此处判断方法
+  if (!child || child.tagName == 'canvas' || /[A-Z]/.test(child.tagName)) {
+    frame = document.createElement("div");
+    frame.innerHTML = template;
+    childNodes = frame.childNodes;
+    for (flag = 0; flag < childNodes.length; flag++) {
+      if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
+        child = childNodes[flag];
+        break;
+      }
+    }
+  }
+  return child;
+
+});;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_to_node__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_luna_library__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_to_node__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_luna_library__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_luna_library__);
 
 
@@ -89,7 +130,10 @@ var xhtml = function (selector) {
     selector = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_to_node__["a" /* default */])(selector)];
   }
 
-  // 挂载对象方法
+  /**
+   * 挂载对象方法
+   * ---------------------
+   */
   var hook = {
 
     // DOM追加
@@ -98,7 +142,7 @@ var xhtml = function (selector) {
     "before": __WEBPACK_IMPORTED_MODULE_0__dom_add__["c" /* before */],
     "after": __WEBPACK_IMPORTED_MODULE_0__dom_add__["d" /* after */],
 
-    // 工具类
+    // 复制
     "copy": function (callback, errorback) {
       __WEBPACK_IMPORTED_MODULE_2_luna_library___default.a.clipboard_copy(hook[0], callback, errorback);
       return hook;
@@ -112,23 +156,24 @@ var xhtml = function (selector) {
   }
   hook.length = flag;
 
+  // 标记这是一个xhtml对象
+  hook.$type = 'xhtml';
+
   return hook;
 };
 
-// 挂载静态方法
+/**
+ * 挂载静态方法
+ * ---------------------
+ */
+
+// 复制
 xhtml.copy = __WEBPACK_IMPORTED_MODULE_2_luna_library___default.a.clipboard_copy;
+
+// 轮询动画
 xhtml.animation = __WEBPACK_IMPORTED_MODULE_2_luna_library___default.a.animation;
 
 /* harmony default export */ __webpack_exports__["a"] = (xhtml);
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
-
 
 /***/ }),
 /* 2 */
@@ -136,7 +181,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(1);
+
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_add')).append('<div>append</div>').prepend('<div>prepend</div>').after('<div>after</div>').before('<div>before</div>');
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(1);
 
 
 window.copy1 = function () {
@@ -158,7 +214,7 @@ window.anim = function () {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 (function (global, factory) {
@@ -233,7 +289,7 @@ window.anim = function () {
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /*!
@@ -466,47 +522,6 @@ luna.dom_styles = function (dom, name) {
 
 
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function (template) {
-
-  var frame = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
-  // 把传递元素类型和标记进行统一处理
-  // http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
-  if (/^(?:\\.|[\w-]|[^0-\xa0])+$/.test(template)) template = "<" + template.trim() + "></" + template.trim() + ">";
-  __WEBPACK_IMPORTED_MODULE_0_innersvg___default.a.set(frame, template);
-  var childNodes = frame.childNodes, flag, child;
-  for (flag = 0; flag < childNodes.length; flag++) {
-    if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
-      child = childNodes[flag];
-      break;
-    }
-  }
-  // 如果不是svg元素，重新用html命名空间创建
-  // 目前结点只考虑了svg元素和html元素
-  // 如果考虑别的元素类型需要修改此处判断方法
-  if (!child || child.tagName == 'canvas' || /[A-Z]/.test(child.tagName)) {
-    frame = document.createElement("div");
-    frame.innerHTML = template;
-    childNodes = frame.childNodes;
-    for (flag = 0; flag < childNodes.length; flag++) {
-      if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
-        child = childNodes[flag];
-        break;
-      }
-    }
-  }
-  return child;
-
-});;
-
-/***/ }),
 /* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -515,23 +530,92 @@ luna.dom_styles = function (dom, name) {
 /* harmony export (immutable) */ __webpack_exports__["b"] = prepend;
 /* harmony export (immutable) */ __webpack_exports__["c"] = before;
 /* harmony export (immutable) */ __webpack_exports__["d"] = after;
-function append() {
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_to_node__ = __webpack_require__(0);
 
+
+/**
+ * 在被选元素内部的结尾插入内容
+ */
+function append(node) {
+  var flag;
+  if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].appendChild(node);
+    }
+  } else if (node.$type == 'xhtml') {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].appendChild(node[0]);
+    }
+  } else if (typeof node == 'string') {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node));
+    }
+  } else {
+    throw new Error("Not acceptable type!");
+  }
   return this;
 };
 
-function prepend() {
-
+/**
+ * 在被选元素内部的开头插入内容
+ */
+function prepend(node) {
+  var flag;
+  if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].insertBefore(node, this[0].childNodes[0]);
+    }
+  } else if (node.$type == 'xhtml') {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].insertBefore(node[0], this[0].childNodes[0]);
+    }
+  } else if (typeof node == 'string') {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[0].childNodes[0]);
+    }
+  } else {
+    throw new Error("Not acceptable type!");
+  }
   return this;
 };
 
-function before() {
-
+/**
+ * 在被选元素之前插入内容
+ */
+function before(node) {
+  var parent, flag;
+  for (flag = 0; flag < this.length; flag++) {
+    parent = this[flag].parentNode || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])('body');
+    if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+      parent.insertBefore(node, this[flag]);
+    } else if (node.$type == 'xhtml') {
+      parent.insertBefore(node[0], this[flag]);
+    } else if (typeof node == 'string') {
+      parent.insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[flag]);
+    } else {
+      throw new Error("Not acceptable type!");
+    }
+  }
   return this;
 };
 
-function after() {
-
+/**
+ * 在被选元素之后插入内容
+ */
+function after(node) {
+  var flag, parent;
+  for (flag = 0; flag < this.length; flag++) {
+    parent = this[flag].parentNode || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])('body');
+    if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+      parent.insertBefore(node, this[flag].nextSibling); //如果第二个参数undefined,在结尾追加，目的一样达到
+    } else if (node.$type == 'xhtml') {
+      parent.insertBefore(node[0], this[flag].nextSibling);
+    } else if (typeof node == 'string') {
+      parent.insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[flag].nextSibling);
+    } else {
+      throw new Error("Not acceptable type!");
+    }
+  }
   return this;
 };
 
@@ -539,8 +623,8 @@ function after() {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(2);
+__webpack_require__(2);
+module.exports = __webpack_require__(3);
 
 
 /***/ })

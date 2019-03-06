@@ -12,7 +12,10 @@ var xhtml = function (selector) {
     selector = [toNode(selector)];
   }
 
-  // 挂载对象方法
+  /**
+   * 挂载对象方法
+   * ---------------------
+   */
   var hook = {
 
     // DOM追加
@@ -21,7 +24,7 @@ var xhtml = function (selector) {
     "before": before,
     "after": after,
 
-    // 工具类
+    // 复制
     "copy": function (callback, errorback) {
       luna.clipboard_copy(hook[0], callback, errorback);
       return hook;
@@ -35,12 +38,22 @@ var xhtml = function (selector) {
   }
   hook.length = flag;
 
+  // 标记这是一个xhtml对象
+  hook.$type = 'xhtml';
+
   return hook;
 
 };
 
-// 挂载静态方法
+/**
+ * 挂载静态方法
+ * ---------------------
+ */
+
+// 复制
 xhtml.copy = luna.clipboard_copy;
+
+// 轮询动画
 xhtml.animation = luna.animation;
 
 export default xhtml;
