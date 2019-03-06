@@ -1,0 +1,24 @@
+{
+  "name": "xhtml",
+  "version": "0.1.0",
+  "description": "常用的dom操作集合。Common set of DOM operations.",
+  "main": "src/core.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yelloxing/xhtml.git"
+  },
+  "keywords": [
+    "dom",
+    "svg"
+  ],
+  "author": "心叶",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yelloxing/xhtml/issues"
+  },
+  "homepage": "https://github.com/yelloxing/xhtml#readme",
+  "dependencies": {
+    "luna-library": "^2.0.1",
+    "to-node": "^0.1.0"
+  }
+}
