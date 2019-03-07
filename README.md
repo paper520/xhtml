@@ -25,10 +25,12 @@ xhtml有二种使用方法：直接调用xhtml上的静态方法和调用xhtml�
 获取xhtml对象的方法很简单：
 
 ```js
-doms有三种选项：
-  1.DOM结点
-  2.DOM结点集合（必须有length属性）
-  3.html或svg字符串（比如："<g></g>"）
+/*
+* doms有三种选项：
+*   1.DOM结点
+*   2.DOM结点集合（必须有length属性）
+*   3.html或svg字符串（比如："<g></g>"）
+*/
 var xhtmlObj=xhtml(doms);
 ```
 
