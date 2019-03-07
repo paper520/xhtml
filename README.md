@@ -6,7 +6,7 @@
 ### 邮箱:yelloxing@gmail.com
 ****
 
-如何使用？
+如何引入？
 --------------------------------------
 ```bash
 npm install --save xhtml.js
@@ -17,6 +17,25 @@ npm install --save xhtml.js
 ```js
 import xhtml from 'xhtml.js';
 ```
+
+如何使用？
+---------------------------------------
+xhtml有二种使用方法：直接调用xhtml上的静态方法和调用xhtml对象上的方法。
+
+获取xhtml对象的方法很简单：
+
+```js
+doms有三种选项：
+  1.DOM结点
+  2.DOM结点集合（必须有length属性）
+  3.html或svg字符串（比如："<g></g>"）
+var xhtmlObj=xhtml(doms);
+```
+
+下面的文档会列出全部挂载在xhtml类和xhtml对象上的方法（xhtml表示类，xhtmlObj表示对象）：
+
+- [工具类方法（比如复制到剪切板、轮询动画等）](./doc/tool.md)
+- [结点的添加和删除](./doc/dom_add&delete.md)
 
 ### 免责声明
 

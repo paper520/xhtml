@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -113,9 +113,11 @@
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_to_node__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_luna_library__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_luna_library__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_luna_library__);
+
 
 
 
@@ -127,7 +129,7 @@ var xhtml = function (selector) {
   }
 
   if (typeof selector == 'string') {
-    selector = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_to_node__["a" /* default */])(selector)];
+    selector = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_to_node__["a" /* default */])(selector)];
   }
 
   /**
@@ -144,9 +146,12 @@ var xhtml = function (selector) {
 
     // 复制
     "copy": function (callback, errorback) {
-      __WEBPACK_IMPORTED_MODULE_2_luna_library___default.a.clipboard_copy(hook[0], callback, errorback);
+      __WEBPACK_IMPORTED_MODULE_3_luna_library___default.a.clipboard_copy(hook[0], callback, errorback);
       return hook;
-    }
+    },
+
+    // DOM删除
+    "remove": __WEBPACK_IMPORTED_MODULE_1__dom_delete__["a" /* remove */]
 
   };
 
@@ -168,10 +173,10 @@ var xhtml = function (selector) {
  */
 
 // 复制
-xhtml.copy = __WEBPACK_IMPORTED_MODULE_2_luna_library___default.a.clipboard_copy;
+xhtml.copy = __WEBPACK_IMPORTED_MODULE_3_luna_library___default.a.clipboard_copy;
 
 // 轮询动画
-xhtml.animation = __WEBPACK_IMPORTED_MODULE_2_luna_library___default.a.animation;
+xhtml.animation = __WEBPACK_IMPORTED_MODULE_3_luna_library___default.a.animation;
 
 /* harmony default export */ __webpack_exports__["a"] = (xhtml);
 
@@ -621,6 +626,23 @@ function after(node) {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = remove;
+/**
+ * 删除被选元素（及其子元素）
+ */
+function remove() {
+  var flag;
+  for (flag = 0; flag < this.length; flag++) {
+    this[flag].parentNode.removeChild(this[flag]);
+  }
+  return this;
+};
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);

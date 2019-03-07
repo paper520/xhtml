@@ -1,4 +1,5 @@
 import { append, prepend, before, after } from './dom_add';
+import { remove } from './dom_delete';
 import toNode from 'to-node';
 import luna from 'luna-library';
 
@@ -28,8 +29,11 @@ var xhtml = function (selector) {
     "copy": function (callback, errorback) {
       luna.clipboard_copy(hook[0], callback, errorback);
       return hook;
-    }
+    },
 
+    // DOM删除
+    "remove": remove
+    
   };
 
   var flag;
