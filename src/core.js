@@ -2,6 +2,7 @@ import { append, prepend, before, after } from './dom_add';
 import { remove } from './dom_delete';
 import toNode from 'to-node';
 import luna from 'luna-library';
+import css from './css';
 
 var xhtml = function (selector) {
 
@@ -32,8 +33,11 @@ var xhtml = function (selector) {
     },
 
     // DOM删除
-    "remove": remove
-    
+    "remove": remove,
+
+    // css样式
+    "css": css
+
   };
 
   var flag;

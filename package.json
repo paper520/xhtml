@@ -1,11 +1,14 @@
 {
   "name": "xhtml.js",
-  "version": "0.1.1next",
+  "version": "0.1.2next",
   "description": "常用的dom操作集合。Common set of DOM operations.",
   "main": "src/core.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yelloxing/xhtml.git"
+  },
+  "scripts": {
+    "start": "npm install"
   },
   "keywords": [
     "dom",

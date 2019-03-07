@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,52 +71,13 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function (template) {
-
-  var frame = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
-  // 把传递元素类型和标记进行统一处理
-  // http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
-  if (/^(?:\\.|[\w-]|[^0-\xa0])+$/.test(template)) template = "<" + template.trim() + "></" + template.trim() + ">";
-  __WEBPACK_IMPORTED_MODULE_0_innersvg___default.a.set(frame, template);
-  var childNodes = frame.childNodes, flag, child;
-  for (flag = 0; flag < childNodes.length; flag++) {
-    if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
-      child = childNodes[flag];
-      break;
-    }
-  }
-  // 如果不是svg元素，重新用html命名空间创建
-  // 目前结点只考虑了svg元素和html元素
-  // 如果考虑别的元素类型需要修改此处判断方法
-  if (!child || child.tagName == 'canvas' || /[A-Z]/.test(child.tagName)) {
-    frame = document.createElement("div");
-    frame.innerHTML = template;
-    childNodes = frame.childNodes;
-    for (flag = 0; flag < childNodes.length; flag++) {
-      if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
-        child = childNodes[flag];
-        break;
-      }
-    }
-  }
-  return child;
-
-});;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_luna_library__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(8);
+
 
 
 
@@ -151,7 +112,10 @@ var xhtml = function (selector) {
     },
 
     // DOM删除
-    "remove": __WEBPACK_IMPORTED_MODULE_1__dom_delete__["a" /* remove */]
+    "remove": __WEBPACK_IMPORTED_MODULE_1__dom_delete__["a" /* remove */],
+
+    // css样式
+    "css": __WEBPACK_IMPORTED_MODULE_4__css__["a" /* default */]
 
   };
 
@@ -181,120 +145,7 @@ xhtml.animation = __WEBPACK_IMPORTED_MODULE_3_luna_library___default.a.animation
 /* harmony default export */ __webpack_exports__["a"] = (xhtml);
 
 /***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(1);
-
-
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_add')).append('<div>append</div>').prepend('<div>prepend</div>').after('<div>after</div>').before('<div>before</div>');
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(1);
-
-
-window.copy1 = function () {
-  // 复制
-  __WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */].copy('这是一段文字');
-};
-
-window.copy2 = function () {
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('tool')).copy();
-};
-
-// 轮询动画
-window.anim = function () {
-  __WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */].animation(function (deep) {
-    console.log('deep:' + deep);
-  }, 1000, function () {
-    console.log('stop!');
-  });
-};
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-(function (global, factory) {
-
-  'use strict';
-
-  if (typeof module === "object" && typeof module.exports === "object") {
-    module.exports = factory();
-  } else {
-    global.innerSVG = factory();
-  }
-
-})(typeof window !== "undefined" ? window : this, function (undefined) {
-
-  // 记录需要使用xlink命名空间常见的xml属性
-  var xlink = ["href", "title", "show", "type", "role", "actuate"];
-  var namespace_svg = "http://www.w3.org/2000/svg";
-  var namespace_xlink = "http://www.w3.org/1999/xlink";
-
-  return {
-
-    // 获取svg字符串
-    "get": function (target) {
-      var frame = document.createElement("div"), i;
-      for (i = 0; i < target.childNodes.length; i++) {
-        // 深度克隆，克隆节点以及节点下面的子内容
-        frame.appendChild(target.childNodes[i].cloneNode(true));
-      }
-      return frame.innerHTML;
-    },
-
-    // 设置svg字符串
-    "set": function (target, svgstring) {
-      if ('innerHTML' in SVGElement.prototype === false || 'innerHTML' in SVGSVGElement.prototype === false) {
-        var frame = document.createElement("div"), i;
-        frame.innerHTML = svgstring;
-        var toSvgNode = function (htmlNode) {
-          var svgNode = document.createElementNS(namespace_svg, (htmlNode.tagName + "").toLowerCase());
-          var attrs = htmlNode.attributes, i;
-          for (i = 0; attrs && i < attrs.length; i++) {
-            if (xlink.indexOf(attrs[i].nodeName) >= 0) {
-              // 针对特殊的svg属性，追加命名空间
-              svgNode.setAttributeNS(namespace_xlink, 'xlink:' + attrs[i].nodeName, htmlNode.getAttribute(attrs[i].nodeName));
-            } else {
-              svgNode.setAttribute(attrs[i].nodeName, htmlNode.getAttribute(attrs[i].nodeName));
-            }
-          }
-          return svgNode;
-        };
-        var rslNode = toSvgNode(frame.firstChild);
-        (function toSVG(pnode, svgPnode) {
-          var node = pnode.firstChild;
-          if (node && node.nodeType == 3) {
-            svgPnode.textContent = pnode.innerText;
-            return;
-          }
-          while (node) {
-            var svgNode = toSvgNode(node);
-            svgPnode.appendChild(svgNode);
-            if (node.firstChild) toSVG(node, svgNode);
-            node = node.nextSibling;
-          }
-        })(frame.firstChild, rslNode);
-        target.appendChild(rslNode);
-      } else {
-        // 如果当前浏览器提供了svg类型结点的innerHTML,我们还是使用浏览器提供的
-        target.innerHTML = svgstring;
-      }
-    }
-
-  };
-});
-
-/***/ }),
-/* 5 */
+/* 1 */
 /***/ (function(module, exports) {
 
 /*!
@@ -527,7 +378,232 @@ luna.dom_styles = function (dom, name) {
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (template) {
+
+  var frame = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+  // 把传递元素类型和标记进行统一处理
+  // http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
+  if (/^(?:\\.|[\w-]|[^0-\xa0])+$/.test(template)) template = "<" + template.trim() + "></" + template.trim() + ">";
+  __WEBPACK_IMPORTED_MODULE_0_innersvg___default.a.set(frame, template);
+  var childNodes = frame.childNodes, flag, child;
+  for (flag = 0; flag < childNodes.length; flag++) {
+    if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
+      child = childNodes[flag];
+      break;
+    }
+  }
+  // 如果不是svg元素，重新用html命名空间创建
+  // 目前结点只考虑了svg元素和html元素
+  // 如果考虑别的元素类型需要修改此处判断方法
+  if (!child || child.tagName == 'canvas' || /[A-Z]/.test(child.tagName)) {
+    frame = document.createElement("div");
+    frame.innerHTML = template;
+    childNodes = frame.childNodes;
+    for (flag = 0; flag < childNodes.length; flag++) {
+      if (childNodes[flag].nodeType === 1 || childNodes[flag].nodeType === 9 || childNodes[flag].nodeType === 11) {
+        child = childNodes[flag];
+        break;
+      }
+    }
+  }
+  return child;
+
+});;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+
+
+var xhtmlObj = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('css'));
+
+console.log(xhtmlObj.css('color'));
+
+console.log(xhtmlObj.css());
+
+xhtmlObj.css('color', 'blue');
+
+console.log(xhtmlObj.css('color'));
+
+xhtmlObj.css({
+  "color": "green",
+  "font-size": "50px"
+});
+
+console.log(xhtmlObj.css('color'));
+console.log(xhtmlObj.css('font-size'));
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_add')).append('<div>append</div>').prepend('<div>prepend</div>').after('<div>after</div>').before('<div>before</div>');
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_delete')).remove();
+
+/***/ }),
 /* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+
+
+window.copy1 = function () {
+  // 复制
+  __WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */].copy('这是一段文字');
+};
+
+window.copy2 = function () {
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('tool')).copy();
+};
+
+// 轮询动画
+window.anim = function () {
+  __WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */].animation(function (deep) {
+    console.log('deep:' + deep);
+  }, 1000, function () {
+    console.log('stop!');
+  });
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+(function (global, factory) {
+
+  'use strict';
+
+  if (typeof module === "object" && typeof module.exports === "object") {
+    module.exports = factory();
+  } else {
+    global.innerSVG = factory();
+  }
+
+})(typeof window !== "undefined" ? window : this, function (undefined) {
+
+  // 记录需要使用xlink命名空间常见的xml属性
+  var xlink = ["href", "title", "show", "type", "role", "actuate"];
+  var namespace_svg = "http://www.w3.org/2000/svg";
+  var namespace_xlink = "http://www.w3.org/1999/xlink";
+
+  return {
+
+    // 获取svg字符串
+    "get": function (target) {
+      var frame = document.createElement("div"), i;
+      for (i = 0; i < target.childNodes.length; i++) {
+        // 深度克隆，克隆节点以及节点下面的子内容
+        frame.appendChild(target.childNodes[i].cloneNode(true));
+      }
+      return frame.innerHTML;
+    },
+
+    // 设置svg字符串
+    "set": function (target, svgstring) {
+      if ('innerHTML' in SVGElement.prototype === false || 'innerHTML' in SVGSVGElement.prototype === false) {
+        var frame = document.createElement("div"), i;
+        frame.innerHTML = svgstring;
+        var toSvgNode = function (htmlNode) {
+          var svgNode = document.createElementNS(namespace_svg, (htmlNode.tagName + "").toLowerCase());
+          var attrs = htmlNode.attributes, i;
+          for (i = 0; attrs && i < attrs.length; i++) {
+            if (xlink.indexOf(attrs[i].nodeName) >= 0) {
+              // 针对特殊的svg属性，追加命名空间
+              svgNode.setAttributeNS(namespace_xlink, 'xlink:' + attrs[i].nodeName, htmlNode.getAttribute(attrs[i].nodeName));
+            } else {
+              svgNode.setAttribute(attrs[i].nodeName, htmlNode.getAttribute(attrs[i].nodeName));
+            }
+          }
+          return svgNode;
+        };
+        var rslNode = toSvgNode(frame.firstChild);
+        (function toSVG(pnode, svgPnode) {
+          var node = pnode.firstChild;
+          if (node && node.nodeType == 3) {
+            svgPnode.textContent = pnode.innerText;
+            return;
+          }
+          while (node) {
+            var svgNode = toSvgNode(node);
+            svgPnode.appendChild(svgNode);
+            if (node.firstChild) toSVG(node, svgNode);
+            node = node.nextSibling;
+          }
+        })(frame.firstChild, rslNode);
+        target.appendChild(rslNode);
+      } else {
+        // 如果当前浏览器提供了svg类型结点的innerHTML,我们还是使用浏览器提供的
+        target.innerHTML = svgstring;
+      }
+    }
+
+  };
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_luna_library__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_luna_library__);
+
+
+/**
+ * 设置或返回被选元素的一个样式属性
+ */
+/* harmony default export */ __webpack_exports__["a"] = (function (name, style) {
+  var flag;
+  if (typeof name === 'string' && arguments.length === 1) {
+    return __WEBPACK_IMPORTED_MODULE_0_luna_library___default.a.dom_styles(this[0], name);
+  }
+  if (typeof name === 'string' && typeof style === 'string') {
+    for (flag = 0; flag < this.length; flag++) {
+      this[flag].style[name] = style;
+    }
+  } else if (typeof name === 'object') {
+    for (var key in name) {
+      for (flag = 0; flag < this.length; flag++) {
+        this[flag].style[key] = name[key];
+      }
+    }
+  } else {
+    return __WEBPACK_IMPORTED_MODULE_0_luna_library___default.a.dom_styles(this[0]);
+  }
+  return this;
+});;
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -535,7 +611,7 @@ luna.dom_styles = function (dom, name) {
 /* harmony export (immutable) */ __webpack_exports__["b"] = prepend;
 /* harmony export (immutable) */ __webpack_exports__["c"] = before;
 /* harmony export (immutable) */ __webpack_exports__["d"] = after;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_to_node__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_to_node__ = __webpack_require__(2);
 
 
 /**
@@ -625,7 +701,7 @@ function after(node) {
 };
 
 /***/ }),
-/* 7 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -642,10 +718,12 @@ function remove() {
 };
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
+__webpack_require__(4);
+__webpack_require__(5);
+__webpack_require__(6);
 module.exports = __webpack_require__(3);
 
 
