@@ -6,6 +6,7 @@ module.exports = {
     './src/tool.js',
     './src/css.js',
     './src/attr.js',
+    './src/search.js',
   ],
   output: {
     path: __dirname,

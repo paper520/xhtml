@@ -39,6 +39,7 @@ var xhtmlObj=xhtml(doms);
 - [工具类方法（比如复制到剪切板、轮询动画等）](./doc/tool.md)
 - [结点的添加和删除](./doc/dom_add&delete.md)
 - [css样式和attr属性编辑和查询](./doc/css_attr.md)
+- [结点查找](./doc/search.md)
 
 ### 免责声明
 

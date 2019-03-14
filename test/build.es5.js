@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,13 +71,15 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_luna_library__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attr__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attr__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__search__ = __webpack_require__(15);
+
 
 
 
@@ -120,7 +122,19 @@ var xhtml = function (selector) {
     "css": __WEBPACK_IMPORTED_MODULE_4__css__["a" /* default */],
 
     // 属性
-    "attr": __WEBPACK_IMPORTED_MODULE_5__attr__["a" /* default */]
+    "attr": __WEBPACK_IMPORTED_MODULE_5__attr__["a" /* default */],
+
+    // 查找
+    "eq": __WEBPACK_IMPORTED_MODULE_6__search__["a" /* eq */],
+    "child": __WEBPACK_IMPORTED_MODULE_6__search__["b" /* child */],
+    "children": __WEBPACK_IMPORTED_MODULE_6__search__["c" /* children */],
+    "parent": __WEBPACK_IMPORTED_MODULE_6__search__["d" /* parent */],
+    "parents": __WEBPACK_IMPORTED_MODULE_6__search__["e" /* parents */],
+    "next": __WEBPACK_IMPORTED_MODULE_6__search__["f" /* next */],
+    "nextAll": __WEBPACK_IMPORTED_MODULE_6__search__["g" /* nextAll */],
+    "prev": __WEBPACK_IMPORTED_MODULE_6__search__["h" /* prev */],
+    "prevAll": __WEBPACK_IMPORTED_MODULE_6__search__["i" /* prevAll */],
+    "siblings": __WEBPACK_IMPORTED_MODULE_6__search__["j" /* siblings */]
 
   };
 
@@ -131,7 +145,7 @@ var xhtml = function (selector) {
   hook.length = flag;
 
   // 标记这是一个xhtml对象
-  hook.$type = 'xhtml';
+  hook.__type__ = 'xhtml';
 
   return hook;
 };
@@ -387,7 +401,7 @@ luna.dom_styles = function (dom, name) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
 
 
@@ -497,6 +511,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
 
 
+var xhtmlObj = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('search'));
+
+console.log(xhtmlObj.eq(0));
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+
+
 window.copy1 = function () {
   // 复制
   __WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */].copy('这是一段文字');
@@ -516,7 +543,7 @@ window.anim = function () {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 (function (global, factory) {
@@ -591,11 +618,11 @@ window.anim = function () {
 });
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(11);
 
 
 /**
@@ -620,7 +647,7 @@ window.anim = function () {
 });;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -641,7 +668,7 @@ let xlink = ["href", "title", "show", "type", "role", "actuate"];
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -674,7 +701,7 @@ let xlink = ["href", "title", "show", "type", "role", "actuate"];
 });;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -694,7 +721,7 @@ function append(node) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].appendChild(node);
     }
-  } else if (node.$type == 'xhtml') {
+  } else if (node.__type__ == 'xhtml') {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].appendChild(node[0]);
     }
@@ -717,7 +744,7 @@ function prepend(node) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].insertBefore(node, this[0].childNodes[0]);
     }
-  } else if (node.$type == 'xhtml') {
+  } else if (node.__type__ == 'xhtml') {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].insertBefore(node[0], this[0].childNodes[0]);
     }
@@ -740,7 +767,7 @@ function before(node) {
     parent = this[flag].parentNode || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])('body');
     if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
       parent.insertBefore(node, this[flag]);
-    } else if (node.$type == 'xhtml') {
+    } else if (node.__type__ == 'xhtml') {
       parent.insertBefore(node[0], this[flag]);
     } else if (typeof node == 'string') {
       parent.insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[flag]);
@@ -760,7 +787,7 @@ function after(node) {
     parent = this[flag].parentNode || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])('body');
     if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
       parent.insertBefore(node, this[flag].nextSibling); //如果第二个参数undefined,在结尾追加，目的一样达到
-    } else if (node.$type == 'xhtml') {
+    } else if (node.__type__ == 'xhtml') {
       parent.insertBefore(node[0], this[flag].nextSibling);
     } else if (typeof node == 'string') {
       parent.insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[flag].nextSibling);
@@ -772,7 +799,7 @@ function after(node) {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -789,14 +816,84 @@ function remove() {
 };
 
 /***/ }),
-/* 14 */
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = eq;
+/* harmony export (immutable) */ __webpack_exports__["b"] = child;
+/* harmony export (immutable) */ __webpack_exports__["c"] = children;
+/* harmony export (immutable) */ __webpack_exports__["d"] = parent;
+/* harmony export (immutable) */ __webpack_exports__["e"] = parents;
+/* harmony export (immutable) */ __webpack_exports__["f"] = next;
+/* harmony export (immutable) */ __webpack_exports__["g"] = nextAll;
+/* harmony export (immutable) */ __webpack_exports__["h"] = prev;
+/* harmony export (immutable) */ __webpack_exports__["i"] = prevAll;
+/* harmony export (immutable) */ __webpack_exports__["j"] = siblings;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core__ = __webpack_require__(0);
+
+
+/**
+ * 筛选被选元素
+*/
+function eq(index) {
+  if (this.length > index) return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])(this[index]);
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])([]);
+};
+
+/**
+ * 返回被选元素的第一个子元素
+*/
+function child() {};
+
+/**
+ * 返回被选元素的所有直接子元素
+*/
+function children() {};
+/**
+ * 返回全部被选元素的直接父元素
+*/
+function parent() {};
+
+/**
+ * 返回被选元素的所有祖先元素（不包括祖先的兄弟）
+*/
+function parents() {};
+
+/**
+ * 返回全部被选元素的下一个同胞元素
+*/
+function next() {};
+/**
+ * 返回被选元素的所有跟随的同胞元素
+*/
+function nextAll() {};
+
+/**
+ * 返回全部被选元素的前一个同胞元素
+*/
+function prev() {};
+
+/**
+ * 返回被选元素的所有之前的同胞元素
+*/
+function prevAll() {};
+
+/**
+ * 返回被选元素的所有同胞元素，包括自己
+*/
+function siblings() {};
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(5);
 __webpack_require__(6);
-__webpack_require__(7);
+__webpack_require__(8);
 __webpack_require__(4);
-module.exports = __webpack_require__(3);
+__webpack_require__(3);
+module.exports = __webpack_require__(7);
 
 
 /***/ })

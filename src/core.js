@@ -4,6 +4,7 @@ import toNode from 'to-node';
 import luna from 'luna-library';
 import css from './css';
 import attr from './attr';
+import { eq, child, children, parent, parents, next, nextAll, prev, prevAll, siblings } from './search';
 
 var xhtml = function (selector) {
 
@@ -40,7 +41,19 @@ var xhtml = function (selector) {
     "css": css,
 
     // 属性
-    "attr": attr
+    "attr": attr,
+
+    // 查找
+    "eq": eq,
+    "child": child,
+    "children": children,
+    "parent": parent,
+    "parents": parents,
+    "next": next,
+    "nextAll": nextAll,
+    "prev": prev,
+    "prevAll": prevAll,
+    "siblings": siblings
 
   };
 
@@ -51,7 +64,7 @@ var xhtml = function (selector) {
   hook.length = flag;
 
   // 标记这是一个xhtml对象
-  hook.$type = 'xhtml';
+  hook.__type__ = 'xhtml';
 
   return hook;
 
