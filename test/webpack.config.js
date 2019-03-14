@@ -5,6 +5,7 @@ module.exports = {
     './src/dom_delete.js',
     './src/tool.js',
     './src/css.js',
+    './src/attr.js',
   ],
   output: {
     path: __dirname,

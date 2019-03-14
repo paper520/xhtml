@@ -1,4 +1,4 @@
-css样式编辑和查询
+css样式和attr属性编辑和查询
 ===================
 
 设置或返回被选元素的一个样式属性
@@ -24,3 +24,15 @@ xhtmlObj.css(name, style);
 
 当然，即使你没有设置，只有那个属性有默认值都可以，因为我们获取的是渲染后的值，请注意这一点。
 
+设置或返回被选元素的一个属性
+----------
+
+```js
+xhtmlObj.attr(attr, val);
+```
+
+参数可以分为下面几类：
+
+> (attr, val)：比如xhtmlObj.attr('name','newname')，设置值
+
+> (attr)：比如xhtmlObj.attr('name')，获取值

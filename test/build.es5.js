@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,12 +71,14 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_luna_library__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attr__ = __webpack_require__(9);
+
 
 
 
@@ -115,7 +117,10 @@ var xhtml = function (selector) {
     "remove": __WEBPACK_IMPORTED_MODULE_1__dom_delete__["a" /* remove */],
 
     // css样式
-    "css": __WEBPACK_IMPORTED_MODULE_4__css__["a" /* default */]
+    "css": __WEBPACK_IMPORTED_MODULE_4__css__["a" /* default */],
+
+    // 属性
+    "attr": __WEBPACK_IMPORTED_MODULE_5__attr__["a" /* default */]
 
   };
 
@@ -382,7 +387,7 @@ luna.dom_styles = function (dom, name) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
 
 
@@ -427,6 +432,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
 
 
+var xhtmlObj = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('attr'));
+
+xhtmlObj.attr('name', 'newname');
+
+console.log(xhtmlObj.attr('style'));
+console.log(xhtmlObj.attr('name'));
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_core__ = __webpack_require__(0);
+
+
 var xhtmlObj = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('css'));
 
 console.log(xhtmlObj.css('color'));
@@ -446,7 +467,7 @@ console.log(xhtmlObj.css('color'));
 console.log(xhtmlObj.css('font-size'));
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -457,7 +478,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_add')).append('<div>append</div>').prepend('<div>prepend</div>').after('<div>after</div>').before('<div>before</div>');
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -468,7 +489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_delete')).remove();
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -495,7 +516,7 @@ window.anim = function () {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 (function (global, factory) {
@@ -570,7 +591,57 @@ window.anim = function () {
 });
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(10);
+
+
+/**
+ * 设置或返回被选元素的一个属性
+ */
+/* harmony default export */ __webpack_exports__["a"] = (function (attr, val) {
+  if (val == null || val == undefined) {
+    return this.length > 0 ? this[0].getAttribute(attr) : undefined;
+  } else {
+    var flag;
+    for (flag = 0; flag < this.length; flag++) {
+      // 如果是xml元素
+      // 针对xlink使用特殊方法赋值
+      if (/[A-Z]/.test(this[flag].tagName) && __WEBPACK_IMPORTED_MODULE_0__config__["a" /* xlink */].indexOf(attr) >= 0) {
+        this[flag].setAttributeNS(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* namespace */].xlink, 'xlink:' + attr, val);
+      } else {
+        this[flag].setAttribute(attr, val);
+      }
+    }
+    return this;
+  }
+});;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return namespace; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return xlink; });
+// 命名空间路径
+let namespace = {
+  svg: "http://www.w3.org/2000/svg",
+  xhtml: "http://www.w3.org/1999/xhtml",
+  xlink: "http://www.w3.org/1999/xlink",
+  xml: "http://www.w3.org/XML/1998/namespace",
+  xmlns: "http://www.w3.org/2000/xmlns/"
+};
+
+// 记录需要使用xlink命名空间常见的xml属性
+let xlink = ["href", "title", "show", "type", "role", "actuate"];
+
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -603,7 +674,7 @@ window.anim = function () {
 });;
 
 /***/ }),
-/* 9 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -701,7 +772,7 @@ function after(node) {
 };
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -718,12 +789,13 @@ function remove() {
 };
 
 /***/ }),
-/* 11 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(4);
 __webpack_require__(5);
 __webpack_require__(6);
+__webpack_require__(7);
+__webpack_require__(4);
 module.exports = __webpack_require__(3);
 
 

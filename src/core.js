@@ -3,6 +3,7 @@ import { remove } from './dom_delete';
 import toNode from 'to-node';
 import luna from 'luna-library';
 import css from './css';
+import attr from './attr';
 
 var xhtml = function (selector) {
 
@@ -36,7 +37,10 @@ var xhtml = function (selector) {
     "remove": remove,
 
     // css样式
-    "css": css
+    "css": css,
+
+    // 属性
+    "attr": attr
 
   };
 
