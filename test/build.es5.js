@@ -136,16 +136,24 @@ var xhtml = function (selector) {
 
   };
 
+  var xhtmlFun = function () {};
+  var key;
+  for (key in hook) {
+    if (hook.hasOwnProperty(key)) xhtmlFun.prototype[key] = hook[key];
+  }
+
+  var xhtmlObj = new xhtmlFun();
+
   var flag;
   for (flag = 0; flag < selector.length; flag++) {
-    hook[flag] = selector[flag];
+    xhtmlObj[flag] = selector[flag];
   }
-  hook.length = flag;
+  xhtmlObj.length = flag;
 
   // 标记这是一个xhtml对象
-  hook.__type__ = 'xhtml';
+  xhtmlObj.__type__ = 'xhtml';
 
-  return hook;
+  return xhtmlObj;
 };
 
 /**
