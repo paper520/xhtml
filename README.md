@@ -1,5 +1,5 @@
 # xhtml.js
-常用的dom操作集合。Common set of DOM operations.
+常用的html&svg操作集合。Common set of html&svg operations.
 
 ****
 ### 作者:心叶

@@ -1,7 +1,7 @@
 {
   "name": "xhtml.js",
-  "version": "0.1.2next",
-  "description": "常用的dom操作集合。Common set of DOM operations.",
+  "version": "0.1.4next",
+  "description": "常用的html&svg操作集合。Common set of html&svg operations.",
   "main": "src/core.js",
   "repository": {
     "type": "git",
