@@ -1,15 +1,16 @@
 import toNode from 'to-node';
+import { isNode, isXHTML } from './help';
 
 /**
  * 在被选元素内部的结尾插入内容
  */
 export function append(node) {
   var flag;
-  if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+  if (isNode(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].appendChild(node);
     }
-  } else if (node.__type__ == 'xhtml') {
+  } else if (isXHTML(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].appendChild(node[0]);
     }
@@ -28,11 +29,11 @@ export function append(node) {
  */
 export function prepend(node) {
   var flag;
-  if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+  if (isNode(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].insertBefore(node, this[0].childNodes[0]);
     }
-  } else if (node.__type__ == 'xhtml') {
+  } else if (isXHTML(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].insertBefore(node[0], this[0].childNodes[0]);
     }
@@ -53,9 +54,9 @@ export function before(node) {
   var parent, flag;
   for (flag = 0; flag < this.length; flag++) {
     parent = this[flag].parentNode || toNode('body');
-    if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+    if (isNode(node)) {
       parent.insertBefore(node, this[flag]);
-    } else if (node.__type__ == 'xhtml') {
+    } else if (isXHTML(node)) {
       parent.insertBefore(node[0], this[flag]);
     } else if (typeof node == 'string') {
       parent.insertBefore(toNode(node), this[flag]);
@@ -73,9 +74,9 @@ export function after(node) {
   var flag, parent;
   for (flag = 0; flag < this.length; flag++) {
     parent = this[flag].parentNode || toNode('body');
-    if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+    if (isNode(node)) {
       parent.insertBefore(node, this[flag].nextSibling); //如果第二个参数undefined,在结尾追加，目的一样达到
-    } else if (node.__type__ == 'xhtml') {
+    } else if (isXHTML(node)) {
       parent.insertBefore(node[0], this[flag].nextSibling);
     } else if (typeof node == 'string') {
       parent.insertBefore(toNode(node), this[flag].nextSibling);

@@ -4,11 +4,12 @@ import toNode from 'to-node';
 import luna from 'luna-library';
 import css from './css';
 import attr from './attr';
-import { eq, child, children, parent, parents, next, nextAll, prev, prevAll, siblings } from './search';
+import { isNode } from './help';
+import { eq, children, parent, parents, next, prev } from './search';
 
 var xhtml = function (selector) {
 
-  if (selector && (selector.nodeType === 1 || selector.nodeType === 11 || selector.nodeType === 9)) {
+  if (selector && isNode(selector)) {
     selector = [selector];
   }
 
@@ -45,15 +46,11 @@ var xhtml = function (selector) {
 
     // 查找
     "eq": eq,
-    "child": child,
     "children": children,
     "parent": parent,
     "parents": parents,
     "next": next,
-    "nextAll": nextAll,
-    "prev": prev,
-    "prevAll": prevAll,
-    "siblings": siblings
+    "prev": prev
 
   };
 

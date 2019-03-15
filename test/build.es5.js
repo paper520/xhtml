@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,14 +71,16 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_add__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom_delete__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_to_node__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_luna_library__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attr__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__search__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attr__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__help__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__search__ = __webpack_require__(16);
+
 
 
 
@@ -89,7 +91,7 @@
 
 var xhtml = function (selector) {
 
-  if (selector && (selector.nodeType === 1 || selector.nodeType === 11 || selector.nodeType === 9)) {
+  if (selector && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__help__["a" /* isNode */])(selector)) {
     selector = [selector];
   }
 
@@ -125,16 +127,12 @@ var xhtml = function (selector) {
     "attr": __WEBPACK_IMPORTED_MODULE_5__attr__["a" /* default */],
 
     // 查找
-    "eq": __WEBPACK_IMPORTED_MODULE_6__search__["a" /* eq */],
-    "child": __WEBPACK_IMPORTED_MODULE_6__search__["b" /* child */],
-    "children": __WEBPACK_IMPORTED_MODULE_6__search__["c" /* children */],
-    "parent": __WEBPACK_IMPORTED_MODULE_6__search__["d" /* parent */],
-    "parents": __WEBPACK_IMPORTED_MODULE_6__search__["e" /* parents */],
-    "next": __WEBPACK_IMPORTED_MODULE_6__search__["f" /* next */],
-    "nextAll": __WEBPACK_IMPORTED_MODULE_6__search__["g" /* nextAll */],
-    "prev": __WEBPACK_IMPORTED_MODULE_6__search__["h" /* prev */],
-    "prevAll": __WEBPACK_IMPORTED_MODULE_6__search__["i" /* prevAll */],
-    "siblings": __WEBPACK_IMPORTED_MODULE_6__search__["j" /* siblings */]
+    "eq": __WEBPACK_IMPORTED_MODULE_7__search__["a" /* eq */],
+    "children": __WEBPACK_IMPORTED_MODULE_7__search__["b" /* children */],
+    "parent": __WEBPACK_IMPORTED_MODULE_7__search__["c" /* parent */],
+    "parents": __WEBPACK_IMPORTED_MODULE_7__search__["d" /* parents */],
+    "next": __WEBPACK_IMPORTED_MODULE_7__search__["e" /* next */],
+    "prev": __WEBPACK_IMPORTED_MODULE_7__search__["f" /* prev */]
 
   };
 
@@ -165,6 +163,23 @@ xhtml.animation = __WEBPACK_IMPORTED_MODULE_3_luna_library___default.a.animation
 
 /***/ }),
 /* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = isNode;
+/* harmony export (immutable) */ __webpack_exports__["b"] = isXHTML;
+// 判断是不是结点
+function isNode(node) {
+  return node && (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9);
+};
+
+// 判断是不是xhtml对象
+function isXHTML(xhtml) {
+  return xhtml.__type__ === 'xhtml';
+};
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 /*!
@@ -397,11 +412,11 @@ luna.dom_styles = function (dom, name) {
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_innersvg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_innersvg__);
 
 
@@ -438,7 +453,7 @@ luna.dom_styles = function (dom, name) {
 });;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -454,7 +469,7 @@ console.log(xhtmlObj.attr('style'));
 console.log(xhtmlObj.attr('name'));
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -481,7 +496,7 @@ console.log(xhtmlObj.css('color'));
 console.log(xhtmlObj.css('font-size'));
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -492,7 +507,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_add')).append('<div>append</div>').prepend('<div>prepend</div>').after('<div>after</div>').before('<div>before</div>');
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -503,7 +518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a" /* default */])(document.getElementById('dom_delete')).remove();
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -515,8 +530,19 @@ var xhtmlObj = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src_core__["a"
 
 console.log(xhtmlObj.eq(0));
 
+console.log(xhtmlObj.children());
+
+console.log(xhtmlObj.parent());
+console.log(xhtmlObj.parents());
+
+console.log(xhtmlObj.children().next());
+console.log(xhtmlObj.next());
+
+console.log(xhtmlObj.children().eq(2).prev());
+console.log(xhtmlObj.prev());
+
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -543,7 +569,7 @@ window.anim = function () {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 (function (global, factory) {
@@ -618,11 +644,11 @@ window.anim = function () {
 });
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(12);
 
 
 /**
@@ -647,7 +673,7 @@ window.anim = function () {
 });;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -668,11 +694,11 @@ let xlink = ["href", "title", "show", "type", "role", "actuate"];
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_luna_library__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_luna_library__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_luna_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_luna_library__);
 
 
@@ -701,7 +727,7 @@ let xlink = ["href", "title", "show", "type", "role", "actuate"];
 });;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -709,7 +735,9 @@ let xlink = ["href", "title", "show", "type", "role", "actuate"];
 /* harmony export (immutable) */ __webpack_exports__["b"] = prepend;
 /* harmony export (immutable) */ __webpack_exports__["c"] = before;
 /* harmony export (immutable) */ __webpack_exports__["d"] = after;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_to_node__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_to_node__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__help__ = __webpack_require__(1);
+
 
 
 /**
@@ -717,11 +745,11 @@ let xlink = ["href", "title", "show", "type", "role", "actuate"];
  */
 function append(node) {
   var flag;
-  if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].appendChild(node);
     }
-  } else if (node.__type__ == 'xhtml') {
+  } else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["b" /* isXHTML */])(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].appendChild(node[0]);
     }
@@ -740,11 +768,11 @@ function append(node) {
  */
 function prepend(node) {
   var flag;
-  if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].insertBefore(node, this[0].childNodes[0]);
     }
-  } else if (node.__type__ == 'xhtml') {
+  } else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["b" /* isXHTML */])(node)) {
     for (flag = 0; flag < this.length; flag++) {
       this[flag].insertBefore(node[0], this[0].childNodes[0]);
     }
@@ -765,9 +793,9 @@ function before(node) {
   var parent, flag;
   for (flag = 0; flag < this.length; flag++) {
     parent = this[flag].parentNode || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])('body');
-    if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(node)) {
       parent.insertBefore(node, this[flag]);
-    } else if (node.__type__ == 'xhtml') {
+    } else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["b" /* isXHTML */])(node)) {
       parent.insertBefore(node[0], this[flag]);
     } else if (typeof node == 'string') {
       parent.insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[flag]);
@@ -785,9 +813,9 @@ function after(node) {
   var flag, parent;
   for (flag = 0; flag < this.length; flag++) {
     parent = this[flag].parentNode || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])('body');
-    if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(node)) {
       parent.insertBefore(node, this[flag].nextSibling); //如果第二个参数undefined,在结尾追加，目的一样达到
-    } else if (node.__type__ == 'xhtml') {
+    } else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["b" /* isXHTML */])(node)) {
       parent.insertBefore(node[0], this[flag].nextSibling);
     } else if (typeof node == 'string') {
       parent.insertBefore(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_to_node__["a" /* default */])(node), this[flag].nextSibling);
@@ -799,7 +827,7 @@ function after(node) {
 };
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -816,21 +844,19 @@ function remove() {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = eq;
-/* harmony export (immutable) */ __webpack_exports__["b"] = child;
-/* harmony export (immutable) */ __webpack_exports__["c"] = children;
-/* harmony export (immutable) */ __webpack_exports__["d"] = parent;
-/* harmony export (immutable) */ __webpack_exports__["e"] = parents;
-/* harmony export (immutable) */ __webpack_exports__["f"] = next;
-/* harmony export (immutable) */ __webpack_exports__["g"] = nextAll;
-/* harmony export (immutable) */ __webpack_exports__["h"] = prev;
-/* harmony export (immutable) */ __webpack_exports__["i"] = prevAll;
-/* harmony export (immutable) */ __webpack_exports__["j"] = siblings;
+/* harmony export (immutable) */ __webpack_exports__["b"] = children;
+/* harmony export (immutable) */ __webpack_exports__["c"] = parent;
+/* harmony export (immutable) */ __webpack_exports__["d"] = parents;
+/* harmony export (immutable) */ __webpack_exports__["e"] = next;
+/* harmony export (immutable) */ __webpack_exports__["f"] = prev;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__help__ = __webpack_require__(1);
+
 
 
 /**
@@ -842,58 +868,98 @@ function eq(index) {
 };
 
 /**
- * 返回被选元素的第一个子元素
-*/
-function child() {};
-
-/**
  * 返回被选元素的所有直接子元素
 */
-function children() {};
+function children() {
+  var nodes = [];
+  var i, j, children;
+  for (i = 0; i < this.length; i++) {
+    children = this[i].childNodes;
+    for (j = 0; j < children.length; j++) {
+      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(children[j])) {
+        nodes.push(children[j]);
+      }
+    }
+  }
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])(nodes);
+};
 /**
  * 返回全部被选元素的直接父元素
 */
-function parent() {};
+function parent() {
+  var nodes = [];
+  var i, parent;
+  for (i = 0; i < this.length; i++) {
+    parent = this[i].parentNode;
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(parent)) {
+      nodes.push(parent);
+    }
+  }
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])(nodes);
+};
 
 /**
  * 返回被选元素的所有祖先元素（不包括祖先的兄弟）
 */
-function parents() {};
+function parents() {
+  var nodes = [];
+  var i, parent;
+  for (i = 0; i < this.length; i++) {
+    parent = this[i].parentNode;
+    while (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(parent)) {
+      nodes.push(parent);
+      parent = parent.parentNode;
+    }
+  }
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])(nodes);
+};
 
 /**
  * 返回全部被选元素的下一个同胞元素
 */
-function next() {};
-/**
- * 返回被选元素的所有跟随的同胞元素
-*/
-function nextAll() {};
+function next() {
+  var nodes = [];
+  var i, sibling;
+  for (i = 0; i < this.length; i++) {
+    sibling = this[i].nextSibling;
+    while (sibling && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(sibling)) {
+      sibling = sibling.nextSibling;
+    }
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(sibling)) {
+      nodes.push(sibling);
+    }
+  }
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])(nodes);
+};
 
 /**
  * 返回全部被选元素的前一个同胞元素
 */
-function prev() {};
-
-/**
- * 返回被选元素的所有之前的同胞元素
-*/
-function prevAll() {};
-
-/**
- * 返回被选元素的所有同胞元素，包括自己
-*/
-function siblings() {};
+function prev() {
+  var nodes = [];
+  var i, sibling;
+  for (i = 0; i < this.length; i++) {
+    sibling = this[i].previousSibling;
+    while (sibling && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(sibling)) {
+      sibling = sibling.previousSibling;
+    }
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__help__["a" /* isNode */])(sibling)) {
+      nodes.push(sibling);
+    }
+  }
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core__["a" /* default */])(nodes);
+};
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
 __webpack_require__(6);
-__webpack_require__(8);
+__webpack_require__(7);
+__webpack_require__(9);
+__webpack_require__(5);
 __webpack_require__(4);
-__webpack_require__(3);
-module.exports = __webpack_require__(7);
+module.exports = __webpack_require__(8);
 
 
 /***/ })
